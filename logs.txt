@@ -1,0 +1,8 @@
+57e96fe Resolved merge conflict by keeping sorting and category count
+4396ae7 Implement function to count tasks per category
+0bfc2c0 Merge pull request #11 from NemanjaAcovikj/4-sort-tasks-by-priority
+d9bb51c Merge pull request #10 from NemanjaAcovikj/2-find-all-completed-tasks
+77dc653 Implement function to sort tasks by priority
+7479c34 Implement function to find all completed tasks
+c2ab8c8 Add starter code
+5401194 Create README.md

@@ -1,0 +1,87 @@
+4. mkdir SI_2025_lab1_233069
+   cd SI_2025_lab1_233069
+   git init // поврзување на локалниот со оддалечениот репозиториум
+5. git remote add origin git@github.com:NemanjaAcovikj/SI_2025_lab1_233069.git
+   git remote -v // за проверка дали е успешно поврзан
+6. git pull origin master // ја превзема датотеката од GitHub
+   ls // проверка дали е превземена
+   cat README.md // проверка што имаме запишано во датотеката
+7. nano SI2025Lab1Main.java // креирам датотека и го внесувам кодот
+   git commit -m "Add starter code" // правиме commit
+8. git push origin master // синхронизација на master со репозиториумот
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+13. git fetch origin // креирање на tracker гранки за 3-те гранки кои ги креирав преку Github проектот
+14. git checkout 2-find-all-completed-tasks // 1) префрлање на гранката за првиот issue
+    git checkout 4-sort-tasks-by-priority // 2) префрлање на гранката за вториот issue
+    git checkout 7-count-tasks-per-category // 3) префрлање на гранката за третиот issue
+15. nano SI2025MainLab1.java
+//1) за 2-find-all-completed-tasks
+    List<Task> completed = new ArrayList<>();
+    for (Task task : tasks) {
+        if (task.isCompleted()) {
+            completed.add(task);
+        }
+    }
+    return completed;
+//2) за 4-sort-tasks-by-priority
+    public void sortTasksByPriority() {
+    tasks.sort((task1, task2) -> {
+        return task2.getPriority().compareTo(task1.getPriority());
+    });
+    // во main
+    System.out.println("Before sorting:");
+    manager.printTasks();
+    manager.sortTasksByPriority();
+    System.out.println("\nAfter sorting:");
+    manager.printTasks();
+//3) за 7-count-tasks-per-category
+public Map<String, Integer> countTasksPerCategory() {
+    Map<String, Integer> categoryCount = new HashMap<>();
+    // Помини низ сите задачи и брои по категории
+    for (Task task : tasks) {
+        String category = task.getCategory();
+        categoryCount.put(category, categoryCount.getOrDefault(category, 0) + 1);
+    }
+    return categoryCount;
+}  
+// во main
+System.out.println("\nTask count per category:");
+Map<String, Integer> categoryCounts = manager.countTasksPerCategory();
+for (Map.Entry<String, Integer> entry : categoryCounts.entrySet()) {
+    System.out.println(entry.getKey() + ": " + entry.getValue());
+}
+16. git add SI2025Lab1Main.java
+    git commit -m "Implement function to find all completed tasks" // 1)
+    git commit -m "Implement function to sort tasks by priority" // 2)
+    git commit -m "Implement function to count tasks per category" // 3)
+17. git push origin 2-find-all-completed-tasks // 1)
+    git push origin 4-sort-tasks-by-priority // 2)
+    git push origin 7-count-tasks-per-category // 3)
+18. Отидов на GitHub и го отворив репозиториумот. Беше појавена порака Compare & pull request. Кликнав на неа. Додадов опис за измените и кликнав на Create pull request.
+20. // Одобрив два од трите pull requests(2-find-all-completed-tasks и 4-sort-tasks-by-priority) и ги споив преку клик на копчето Merge pull request.
+21. // И двата issues се преместени автоматски во колоната DONE
+22. git checkout master
+    git pull origin master
+    git merge 7-count-tasks-per-category
+// Тука се јави конфликт. Го решив со бришење на ознаките(<<<<<<< HEAD; =======; >>>>>>> 7-count-tasks-per-category) и мала измена на кодот за да ги задржам и сортирањето и броењето по категории.
+23. git add SI2025Lab1Main.java
+    git commit -m "Resolved merge conflict by keeping sorting and category count"
+    git push origin 7-count-tasks-per-category
+25. git log --oneline --all > logs.txt
+    nano 233069.txt
+    git add logs.txt 233069.txt
+    git commit -m "Final commit"
+26. git push origin master
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+27. // Клик на линкот, па клик на fork
+28. git clone git@github.com:NemanjaAcovikj/SI_2025_lab1_233069.git
+29. cd SI_2025_lab1_151020
+    nano 233069.txt
+    git add 233069.txt
+    git commit -m "Add file"
+30. git pull origin master
+    git push origin master
+31. // Отворете го fork репозиторумот што е креиран на вашиот github профил, и кликнете на Contribute -> Create pull request 
+32. // Го отворив мојот fork на GitHub. Кликнав на Contribute → Create pull request. Во title напишав само број на индекс. Кликнав Create pull request.
+
+
